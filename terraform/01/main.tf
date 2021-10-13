@@ -1,3 +1,8 @@
+provider "aws" {
+  region  = var.region
+  profile = var.aws_profile
+}
+
 resource "aws_vpc" "vpc" {
   cidr_block                       = var.vpc_cidr_block
   enable_dns_hostnames             = var.enable_dns_hostnames
@@ -12,7 +17,7 @@ resource "aws_vpc" "vpc" {
 
 resource "aws_subnet" "subnet" {
 
-  //   depends_on = {aws_vpc.vpc}
+  depends_on = [aws_vpc.vpc]
 
   for_each = var.subnet_az_cidr
 
