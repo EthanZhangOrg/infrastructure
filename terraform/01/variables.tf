@@ -1,7 +1,6 @@
-variable "vpc_cidr_block" {
+variable "region" {
   type        = string
-  description = "CIDR for VPC"
-  // default = "0.0.0.0/16"
+  description = "region for provider"
 }
 
 variable "aws_profile" {
@@ -9,63 +8,62 @@ variable "aws_profile" {
   description = ""
 }
 
+variable "vpc_cidr_block" {
+  type        = string
+  description = "CIDR for VPC"
+}
+
 variable "subnet_az_cidr" {
   type        = map(any)
-  description = ""
+  description = "subnets avalability and cidr"
 }
 
 variable "internet_ipv4" {
   type        = string
   description = ""
-  // default = "0.0.0.0/0"
 }
 
 variable "enable_dns_hostnames" {
   type        = bool
   description = ""
-  default     = true
 }
 
 variable "enable_dns_support" {
   type        = bool
   description = ""
-  default     = true
 }
 
 variable "enable_classiclink_dns_support" {
   type        = bool
   description = ""
-  default     = true
 }
 
 variable "assign_generated_ipv6_cidr_block" {
   type        = bool
   description = ""
-  default     = false
 }
 
 variable "map_public_ip_on_launch" {
   type        = bool
   description = ""
-  default     = true
 }
 
 variable "vpc_name" {
   type        = string
-  description = ""
+  description = "name for vpc"
 }
 
 variable "subnet_name" {
   type        = string
-  description = ""
+  description = "name for subnets"
 }
 
 variable "gateway_name" {
   type        = string
-  description = ""
+  description = "name for gateway"
 }
 
 variable "route_table_name" {
   type        = string
-  description = ""
+  description = "name for route table"
 }
