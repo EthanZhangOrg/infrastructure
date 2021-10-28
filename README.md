@@ -1,8 +1,8 @@
 Tianqi Zhang 001056916
 
-This is the github repo for csye6225 assignment 2.
+This is the github repo for csye6225 assignment 4.
 
-All variables are set in terraform.tfvars. If you want to change the config, just 
+Most variables are set in terraform.tfvars. If you want to change the config, just 
 change values in the .tfvars file.
 
 When everything is set up, just use the commands below to make it work:
