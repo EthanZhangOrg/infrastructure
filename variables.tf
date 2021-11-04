@@ -8,6 +8,11 @@ variable "aws_profile" {
   description = ""
 }
 
+variable "aws_account_id" {
+  type        = string
+  description = ""
+}
+
 variable "vpc_cidr_block" {
   type        = string
   description = "CIDR for VPC"
@@ -235,5 +240,50 @@ variable "iam_instance_profile_name" {
   description = ""
 }
 
+// variables for codedeploy roles and policies
+variable "iam_user_name" {
+  type        = string
+  description = ""
+}
 
+// variables for codedeploy application and deployment groups
+variable "compute_platform" {
+  type        = string
+  description = ""
+}
 
+variable "deployment_type" {
+  type        = string
+  description = ""
+}
+
+variable "deployment_config_name" {
+  type        = string
+  description = ""
+}
+
+// variables for route 53
+variable "route53_record_name" {
+  type        = string
+  description = ""
+}
+
+variable "route53_record_zone_id" {
+  type        = string
+  description = ""
+}
+
+variable "route53_record_type" {
+  type        = string
+  description = ""
+}
+
+variable "route53_record_ttl" {
+  type        = string
+  description = ""
+}
+
+variable "aws_eip_vpc" {
+  type        = bool
+  description = ""
+}
