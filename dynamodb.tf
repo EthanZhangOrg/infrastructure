@@ -15,7 +15,6 @@ resource "aws_dynamodb_table" "dynamodb-table" {
   }
 
   tags = {
-    Name        = "dynamodb-table"
     Environment = "prod"
   }
 }
