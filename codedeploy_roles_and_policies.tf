@@ -110,6 +110,7 @@ resource "aws_iam_role" "CodeDeployEC2ServiceRole" {
   })
 }
 
+# attach codedeploy policies IAM Role for EC2 Instance(s)
 resource "aws_iam_policy_attachment" "CodeDeploy_EC2_S3_role_policy_attachment" {
   name       = "CodeDeploy-EC2-S3-role-policy-attachment"
   roles      = ["${aws_iam_role.CodeDeployEC2ServiceRole.name}"]
@@ -121,6 +122,26 @@ resource "aws_iam_policy_attachment" "iam_policy_attachment" {
   roles      = ["${aws_iam_role.CodeDeployEC2ServiceRole.name}"]
   policy_arn = aws_iam_policy.iam_policy.arn
 }
+
+# attach cloudwatchagent policies IAM Role for EC2 Instance(s)
+resource "aws_iam_policy_attachment" "CloudWatchAgentServerPolicy_policy_attachment" {
+  name       = "CloudWatchAgentServerPolicy-attachment"
+  roles      = ["${aws_iam_role.CodeDeployEC2ServiceRole.name}"]
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
+resource "aws_iam_policy_attachment" "CloudWatchAgentAdminPolicy_policy_attachment" {
+  name       = "CloudWatchAgentAdminPolicy-attachment"
+  roles      = ["${aws_iam_role.CodeDeployEC2ServiceRole.name}"]
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy"
+}
+
+resource "aws_iam_policy_attachment" "AmazonEC2RoleforSSM_policy_attachment" {
+  name       = "AmazonEC2RoleforSSM-attachment"
+  roles      = ["${aws_iam_role.CodeDeployEC2ServiceRole.name}"]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+}
+
 
 # Create CodeDeployServiceRole IAM Role for CodeDeploy
 resource "aws_iam_role" "CodeDeployServiceRole" {

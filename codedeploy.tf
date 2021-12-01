@@ -7,6 +7,7 @@ resource "aws_codedeploy_deployment_group" "codedeploy_deployment_group" {
   app_name              = aws_codedeploy_app.codedeploy_app.name
   deployment_group_name = "csye6225-webapp-deployment"
   service_role_arn      = aws_iam_role.CodeDeployServiceRole.arn
+  autoscaling_groups    = [aws_autoscaling_group.autoscaling_group.name]
 
   deployment_style {
     deployment_type = var.deployment_type

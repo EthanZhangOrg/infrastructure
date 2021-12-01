@@ -16,7 +16,29 @@ resource "aws_db_instance" "db_instance" {
   publicly_accessible    = var.db_instance_publicly_accessible
   vpc_security_group_ids = [aws_security_group.database.id]
   skip_final_snapshot    = var.db_instance_skip_final_snapshot
+  backup_retention_period = 5
+
+  availability_zone = "us-east-1a"
 
   name                 = var.db_instance_name
+  parameter_group_name = aws_db_parameter_group.db_parameter_group.name
+}
+
+resource "aws_db_instance" "db_instance_replica" {
+  engine_version         = var.db_instance_engine_version
+  instance_class         = var.db_instance_instance_class
+  multi_az               = var.db_instance_multi_az
+  identifier             = "csye6225-replica"
+  db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
+  publicly_accessible    = var.db_instance_publicly_accessible
+  vpc_security_group_ids = [aws_security_group.database.id]
+  skip_final_snapshot    = var.db_instance_skip_final_snapshot
+  backup_retention_period = 5
+
+  availability_zone = "us-east-1b"
+
+  replicate_source_db = aws_db_instance.db_instance.arn
+
+  name                 = "csye6225-replica"
   parameter_group_name = aws_db_parameter_group.db_parameter_group.name
 }
