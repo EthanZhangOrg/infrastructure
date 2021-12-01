@@ -5,6 +5,7 @@ resource "aws_lambda_function" "lambda_function" {
   role          = aws_iam_role.LamdbaRole.arn
   handler       = "com.example.serverless.EmailSender::handleRequest"
   timeout = 60
+  memory_size = 512
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
