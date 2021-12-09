@@ -287,3 +287,8 @@ variable "aws_eip_vpc" {
   type        = bool
   description = ""
 }
+
+variable "certificate_arn" {
+  type        = string
+  description = ""
+}
