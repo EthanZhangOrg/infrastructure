@@ -1,6 +1,4 @@
-Tianqi Zhang 001056916
-
-This is the github repo for csye6225 assignment 8.
+Infrastructures for the web application on AWS
 
 Most variables are set in terraform.tfvars. If you want to change the config, just 
 change values in the .tfvars file.
